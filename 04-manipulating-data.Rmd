@@ -38,6 +38,8 @@ the weights from our datasets, we can use: `surveys$wgt`. You can use
 In some cases, you may way to select more than one column. You can do this using
 the square brackets: `surveys[, c("wgt", "sex")]`.
 
+**Stop here, we'll go over subsetting with dplyr**
+
 When analyzing data, though, we often want to look at partial statistics, such
 as the maximum value of a variable per species or the average value per plot.
 
