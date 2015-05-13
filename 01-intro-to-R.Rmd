@@ -29,24 +29,11 @@ _Start by showing an example of a script_
   - the `$` operator
 * Point to indentation and consistency in spacing to improve clarity
 
-![Example of a simple R script](img/r_starting_example_script.png)
-
 ## Creating objects
 
-```{r, echo=FALSE, purl=TRUE}
-### Creating objects (assignments)
-```
-
-You can get output from R simply by typing in math in the console
-
-```{r, purl=FALSE}
-3 + 5
-12/7
-```
-
-However, to do useful and interesting things, we need to assign _values_ to
-_objects_. To create objects, we need to give it a name followed by the
-assignment operator `<-` and the value we want to give it:
+While you can type commands directly in the console, usually you'll want to
+create objects, using "assignment". You assign values, data, etc. to objects
+using the `<-` ooperator. For example:
 
 ```{r, purl=FALSE}
 weight_kg <- 55
@@ -111,17 +98,18 @@ weight_kg <- 100
 
 What do you think is the current content of the object `weight_lb`? 126.5 or 200?
 
-### Exercise
+> ### Challenge {.challenge}
+>
+> What are the values after each statement in the following?
+>
+> ```
+> mass <- 47.5           # mass?
+> age  <- 122            # age?
+> mass <- mass * 2.0     # mass?
+> age  <- age - 20       # age?
+> massIndex <- mass/age  # massIndex?
+> ```
 
-What are the values after each statement in the following?
-
-```{r, purl=FALSE}
-mass <- 47.5           # mass?
-age  <- 122            # age?
-mass <- mass * 2.0     # mass?
-age  <- age - 20       # age?
-massIndex <- mass/age  # massIndex?
-```
 
 ## Vectors and data types
 
