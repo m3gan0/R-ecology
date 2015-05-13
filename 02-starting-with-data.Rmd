@@ -51,7 +51,7 @@ surveys <- read.csv('data/surveys.csv')
 
 <!--- this chunk if for internal use so code in this lesson can be evaluated --->
 ```{r, echo=FALSE, purl=FALSE}
-surveys <- read.csv('../../data/biology/surveys.csv')
+surveys <- read.csv('surveys.csv')
 ```
 
 __At this point, make sure all participants have the data loaded__
@@ -78,13 +78,13 @@ str(surveys)
 __Also, show how to get this information from the "Environment" tab in RStudio.__
 
 
-### Challenge
-
-Based on the output of `str(surveys)`, can you answer the following questions?
-
-* What is the class of the object `surveys`?
-* How many rows and how many columns are in this object?
-* How many species have been recorded during these surveys?
+> ### Challenge {.challenge}
+> 
+> Based on the output of `str(surveys)`, can you answer the following questions?
+> 
+> * What is the class of the object `surveys`?
+> * How many rows and how many columns are in this object?
+> * How many species have been recorded during these surveys?
 
 ```{r, echo=FALSE, purl=TRUE}
 ## Exercise
@@ -132,6 +132,8 @@ levels(sex)
 nlevels(sex)
 ```
 
+### Ordered factors (maybe skip?)
+
 Sometimes, the order of the factors does not matter, other times you might want
 to specify the order because it is meaningful (e.g., "low", "medium", "high") or
 it is required by particular type of analysis. Additionally, specifying the
@@ -155,7 +157,7 @@ is low?  You wouldn't be able to tell with just integer data. Factors have this
 information built in. It is particularly helpful when there are many levels
 (like the species in our example data set).
 
-### Converting factors
+### Converting factors (maybe skip?)
 
 If you need to convert a factor to a character vector, simply use
 `as.character(x)`.
@@ -170,12 +172,12 @@ as.numeric(as.character(f)) ## works...
 as.numeric(levels(f))[f]    ## The recommended way.
 ```
 
-### Challenge
+### Challenge (probably skip)
 
 The function `table()` tabulates observations and can be used to create
 bar plots quickly. For instance:
 
-```{r, results='show', purl=TRUE}
+```{r, echo=FALSE, results='show', purl=TRUE}
 ## Question: How can you recreate this plot but by having "control"
 ## being listed last instead of first?
 exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1", "control",
@@ -184,7 +186,6 @@ table(exprmt)
 barplot(table(exprmt))
 ```
 
-<!---
 ```{r, purl=FALSE}
 exprmt <- factor(exprmt, levels=c("treat1", "treat2", "treat3", "control"))
 barplot(table(exprmt))
