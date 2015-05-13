@@ -87,33 +87,37 @@ surveys_with_weights <- surveys[!is.na(surveys$weight), ]
 ```
 --->
 
-### Challenge
+> ### Challenge {.challenge}
+> 
+> To determine the number of elements found in a vector, we can use use the
+> function `length()` (e.g., `length(surveys$wgt)`). Using `length()` and
+> `na.omit()`, how many animals have not had their weights recorded?
 
-1. To determine the number of elements found in a vector, we can use
-use the function `length()` (e.g., `length(surveys$wgt)`). Using `length()`, how
-many animals have not had their weights recorded?
 
-1. What is the median weight for the males?
+> ### Challenge {.challenge}
+> 
+> What is the range (minimum and maximum) weight?
 
-1. What is the range (minimum and maximum) weight?
 
-1. Bonus question: what is the standard error for the weight? (hints: there is
-   no built-in function to compute standard errors, and the function for the
-   square root is `sqrt()`).
+> ### Challenge {.challenge}
+>
+> Bonus question: what is the standard error for the weight? (hints: there is
+> no built-in function to compute standard errors, and the function for the
+> square root is `sqrt()`).
 
 ```{r, echo=FALSE, purl=TRUE}
 ## 1. To determine the number of elements found in a vector, we can use
 ## use the function `length()` (e.g., `length(surveys$wgt)`). Using `length()`, how
 ## many animals have not had their weights recorded?
 
-## 2. What is the median weight for the males?
+## 2. What is the range (minimum and maximum) weight?
 
-## 3. What is the range (minimum and maximum) weight?
-
-## 4. Bonus question: what is the standard error for the weight? (hints: there is
+## 3. Bonus question: what is the standard error for the weight? (hints: there is
 ##    no built-in function to compute standard errors, and the function for the
 ##    square root is `sqrt()`).
 ```
+
+**Stop here and cover analysis with dplyr and plotting with ggplot2**
 
 # Statistics across factor levels
 
