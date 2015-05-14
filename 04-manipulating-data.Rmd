@@ -32,11 +32,11 @@ clearer.
 
 You can do operations on a particular column, by selecting it using the `$`
 sign. In this case, the entire column is a vector. For instance, to extract all
-the weights from our datasets, we can use: `surveys$wgt`. You can use
+the weights from our datasets, we can use: `surveys$weight`. You can use
 `names(surveys)` or `colnames(surveys)` to remind yourself of the column names.
 
 In some cases, you may way to select more than one column. You can do this using
-the square brackets: `surveys[, c("wgt", "sex")]`.
+the square brackets: `surveys[, c("weight", "sex")]`.
 
 **Stop here, we'll go over subsetting with dplyr**
 
@@ -48,7 +48,7 @@ array, using the `subset()` function. For instance, if we just want to look at
 the animals of the species "DO":
 
 ```{r, purl=FALSE}
-surveys_DO <- subset(surveys, species == "DO")
+surveys_DO <- subset(surveys, species_id == "DO")
 ```
 
 ### Challenge
@@ -89,7 +89,7 @@ file, one column includes the genus and another includes the species. First, we
 are going to import this file in memory:
 
 ```{r, echo=FALSE, purl=FALSE}
-species <- read.csv("../../data/biology/species.csv")
+species <- read.csv("species.csv")
 ```
 
 ```{r, eval=FALSE, purl=TRUE}
@@ -105,7 +105,7 @@ data frame held in the column `species_id`). The function returns the position
 of the matches in the table, and this can be used to retrieve the genus names:
 
 ```{r, purl=TRUE}
-surveys_spid_index <- match(surveys$species, species$species_id)
+surveys_spid_index <- match(surveys$species_id, species$species_id)
 surveys_genera <- species$genus[surveys_spid_index]
 ```
 
