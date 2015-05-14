@@ -223,11 +223,13 @@ clearer.</p>
 
 <p>You can do operations on a particular column, by selecting it using the <code>$</code>
 sign. In this case, the entire column is a vector. For instance, to extract all
-the weights from our datasets, we can use: <code>surveys$wgt</code>. You can use
+the weights from our datasets, we can use: <code>surveys$weight</code>. You can use
 <code>names(surveys)</code> or <code>colnames(surveys)</code> to remind yourself of the column names.</p>
 
 <p>In some cases, you may way to select more than one column. You can do this using
-the square brackets: <code>surveys[, c(&quot;wgt&quot;, &quot;sex&quot;)]</code>.</p>
+the square brackets: <code>surveys[, c(&quot;weight&quot;, &quot;sex&quot;)]</code>.</p>
+
+<p><strong>Stop here, we&#39;ll go over subsetting with dplyr</strong></p>
 
 <p>When analyzing data, though, we often want to look at partial statistics, such
 as the maximum value of a variable per species or the average value per plot.</p>
@@ -236,7 +238,7 @@ as the maximum value of a variable per species or the average value per plot.</p
 array, using the <code>subset()</code> function. For instance, if we just want to look at
 the animals of the species &ldquo;DO&rdquo;:</p>
 
-<pre><code class="r">surveys_DO &lt;- subset(surveys, species == &quot;DO&quot;)
+<pre><code class="r">surveys_DO &lt;- subset(surveys, species_id == &quot;DO&quot;)
 </code></pre>
 
 <h3>Challenge</h3>
@@ -275,7 +277,7 @@ the values to be matched against (in our case the 2 letter code in the <code>spe
 data frame held in the column <code>species_id</code>). The function returns the position
 of the matches in the table, and this can be used to retrieve the genus names:</p>
 
-<pre><code class="r">surveys_spid_index &lt;- match(surveys$species, species$species_id)
+<pre><code class="r">surveys_spid_index &lt;- match(surveys$species_id, species$species_id)
 surveys_genera &lt;- species$genus[surveys_spid_index]
 </code></pre>
 
@@ -294,13 +296,20 @@ frame.</p>
 head(surveys)
 </code></pre>
 
-<pre><code>##   record_id month day year plot species sex wgt       genus species_name
-## 1         1     7  16 1977    2    &lt;NA&gt;   M  NA     Neotoma     albigula
-## 2         2     7  16 1977    3    &lt;NA&gt;   M  NA     Neotoma     albigula
-## 3         3     7  16 1977    2      DM   F  NA   Dipodomys     merriami
-## 4         4     7  16 1977    7      DM   M  NA   Dipodomys     merriami
-## 5         5     7  16 1977    3      DM   M  NA   Dipodomys     merriami
-## 6         6     7  16 1977    1      PF   M  NA Perognathus       flavus
+<pre><code>##   record_id month day year plot_id species_id sex hindfoot_length weight
+## 1         1     7  16 1977       2         NL   M              32     NA
+## 2         2     7  16 1977       3         NL   M              33     NA
+## 3         3     7  16 1977       2         DM   F              37     NA
+## 4         4     7  16 1977       7         DM   M              36     NA
+## 5         5     7  16 1977       3         DM   M              35     NA
+## 6         6     7  16 1977       1         PF   M              14     NA
+##         genus species_name
+## 1     Neotoma     albigula
+## 2     Neotoma     albigula
+## 3   Dipodomys     merriami
+## 4   Dipodomys     merriami
+## 5   Dipodomys     merriami
+## 6 Perognathus       flavus
 </code></pre>
 
 <!--- should we cover merge()? --->
@@ -344,16 +353,17 @@ their names, you can remove them similarly.</p>
 colnames(surveys)
 </code></pre>
 
-<pre><code>##  [1] &quot;record_id&quot;    &quot;month&quot;        &quot;day&quot;          &quot;year&quot;        
-##  [5] &quot;plot&quot;         &quot;species&quot;      &quot;sex&quot;          &quot;wgt&quot;         
-##  [9] &quot;genus&quot;        &quot;species_name&quot;
+<pre><code>##  [1] &quot;record_id&quot;       &quot;month&quot;           &quot;day&quot;            
+##  [4] &quot;year&quot;            &quot;plot_id&quot;         &quot;species_id&quot;     
+##  [7] &quot;sex&quot;             &quot;hindfoot_length&quot; &quot;weight&quot;         
+## [10] &quot;genus&quot;           &quot;species_name&quot;
 </code></pre>
 
 <pre><code class="r">colnames(surveys_noDate)
 </code></pre>
 
-<pre><code>## [1] &quot;record_id&quot;    &quot;plot&quot;         &quot;species&quot;      &quot;sex&quot;         
-## [5] &quot;wgt&quot;          &quot;genus&quot;        &quot;species_name&quot;
+<pre><code>## [1] &quot;record_id&quot;       &quot;plot_id&quot;         &quot;species_id&quot;      &quot;sex&quot;            
+## [5] &quot;hindfoot_length&quot; &quot;weight&quot;          &quot;genus&quot;           &quot;species_name&quot;
 </code></pre>
 
 <p>The easiest way to remove by name is to use the <code>subset()</code> function. This time
@@ -365,8 +375,8 @@ on rows (as above). The minus sign indicates the names of the columns to remove
 colnames(surveys_noDate2)
 </code></pre>
 
-<pre><code>## [1] &quot;record_id&quot;    &quot;plot&quot;         &quot;species&quot;      &quot;sex&quot;         
-## [5] &quot;wgt&quot;          &quot;genus&quot;        &quot;species_name&quot;
+<pre><code>## [1] &quot;record_id&quot;       &quot;plot_id&quot;         &quot;species_id&quot;      &quot;sex&quot;            
+## [5] &quot;hindfoot_length&quot; &quot;weight&quot;          &quot;genus&quot;           &quot;species_name&quot;
 </code></pre>
 
 <h1>Removing rows</h1>
