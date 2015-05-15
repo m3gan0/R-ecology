@@ -223,17 +223,9 @@ hr {
 <p>To begin these exercises we&#39;ll connect to the mammal database you&#39;ve just created.</p>
 
 <pre><code class="r">library(RSQLite)
-</code></pre>
-
-<pre><code>## Error in library(RSQLite): there is no package called &#39;RSQLite&#39;
-</code></pre>
-
-<pre><code class="r">## Set dbname and driver out of convenience
+## Set dbname and driver out of convenience
 myDB &lt;- &quot;portal_mammals.sqlite&quot;
 conn &lt;- dbConnect(drv = SQLite(), dbname= myDB)
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbConnect&quot;
 </code></pre>
 
 <p>Now you&#39;re connected to your database, you can get information about the tables in the database.  While SQLite manager will provide this for you, you&#39;ll need to get it yourself with some basic SQL commands</p>
@@ -245,7 +237,8 @@ conn &lt;- dbConnect(drv = SQLite(), dbname= myDB)
 <pre><code class="r">dbGetQuery(conn,&quot;SELECT type, tbl_name  FROM sqlite_master&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+<pre><code>## [1] type     tbl_name
+## &lt;0 rows&gt; (or 0-length row.names)
 </code></pre>
 
 <p><code>RSQLite</code> has some functions that easily list basic information about your database and tables. Here you can see the types and names of fields and get a count of records.</p>
@@ -253,19 +246,19 @@ conn &lt;- dbConnect(drv = SQLite(), dbname= myDB)
 <pre><code class="r">dbListTables(conn)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbListTables&quot;
+<pre><code>## character(0)
 </code></pre>
 
 <pre><code class="r">dbListFields(conn,&quot;surveys&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbListFields&quot;
+<pre><code>## Error in sqliteSendQuery(conn, statement): error in statement: no such table: surveys
 </code></pre>
 
 <pre><code class="r">dbGetQuery(conn,&quot;SELECT count(*) FROM surveys&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+<pre><code>## Error in sqliteSendQuery(con, statement, bind.data): error in statement: no such table: surveys
 </code></pre>
 
 <p>Great!  That&#39;s all there is to it. You are now connected to your database and know something about the tables in it.  From here you can manipulate it the exact same way you can from SQLite Manager except in a scripted manner. Let&#39;s try some basic queries from the previous lesson.  Querying simply takes a connection to a database and query as inputs and returns a dataframe with the results.</p>
@@ -274,7 +267,7 @@ conn &lt;- dbConnect(drv = SQLite(), dbname= myDB)
 result &lt;-  dbGetQuery(conn,q)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+<pre><code>## Error in sqliteSendQuery(con, statement, bind.data): error in statement: no such table: surveys
 </code></pre>
 
 <pre><code class="r">head(result)
@@ -304,7 +297,7 @@ GROUP BY d.plot_type,c.genus&quot;
 result &lt;- dbGetQuery(conn,q)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+<pre><code>## Error in sqliteSendQuery(con, statement, bind.data): error in statement: no such table: plots
 </code></pre>
 
 <pre><code class="r">head(result)
@@ -320,7 +313,7 @@ result &lt;- dbGetQuery(conn,q)
 <pre><code class="r">yearRange &lt;- dbGetQuery(conn,&quot;SELECT min(year),max(year) FROM surveys&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+<pre><code>## Error in sqliteSendQuery(con, statement, bind.data): error in statement: no such table: surveys
 </code></pre>
 
 <pre><code class="r">years &lt;- seq(yearRange[,1],yearRange[,2],by=2)
@@ -350,7 +343,7 @@ sep = &quot;&quot; )
 <pre><code class="r">rCount &lt;- dbGetQuery(conn,q)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+<pre><code>## Error in sqliteSendQuery(con, statement, bind.data): error in statement: no such table: plots
 </code></pre>
 
 <pre><code class="r">head(rCount)
@@ -381,15 +374,10 @@ plots &lt;- read.csv(&quot;plots.csv&quot;)
 
 <pre><code class="r">myDB &lt;- &quot;portalR.db&quot;
 myConn &lt;- dbConnect(drv = SQLite(), dbname= myDB)
+dbListTables(myConn)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbConnect&quot;
-</code></pre>
-
-<pre><code class="r">dbListTables(myConn)
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbListTables&quot;
+<pre><code>## [1] &quot;species&quot;
 </code></pre>
 
 <p>By opening up a connection, you&#39;ve created a new database.  If you list the tables you&#39;ll see that the database is empty. Next we&#39;ll add the dataframes we just read in to the database.</p>
@@ -397,19 +385,29 @@ myConn &lt;- dbConnect(drv = SQLite(), dbname= myDB)
 <pre><code class="r">dbWriteTable(myConn,&quot;species&quot;,species)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbWriteTable&quot;
+<pre><code>## Error: Table species exists in database, and both overwrite and append are FALSE
 </code></pre>
 
 <pre><code class="r">dbListTables(myConn)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbListTables&quot;
+<pre><code>## [1] &quot;species&quot;
 </code></pre>
 
 <pre><code class="r">dbGetQuery(myConn,&quot;SELECT * from species limit 10&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+<pre><code>##    species_id            genus         species    taxa
+## 1          AB       Amphispiza       bilineata    Bird
+## 2          AH Ammospermophilus         harrisi  Rodent
+## 3          AS       Ammodramus      savannarum    Bird
+## 4          BA          Baiomys         taylori  Rodent
+## 5          CB  Campylorhynchus brunneicapillus    Bird
+## 6          CM      Calamospiza     melanocorys    Bird
+## 7          CQ       Callipepla        squamata    Bird
+## 8          CS         Crotalus      scutalatus Reptile
+## 9          CT    Cnemidophorus          tigris Reptile
+## 10         CU    Cnemidophorus       uniparens Reptile
 </code></pre>
 
 <p>If you check the location of your database you&#39;ll see that data is automatically being written to disk. Not only does R and RSQLite provide easy ways to query existing databases, it also allows you to easily create your own databases from flat files.</p>

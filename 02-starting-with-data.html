@@ -206,7 +206,7 @@ hr {
 
 <ul>
 <li>load external data (CSV files) in memory using the survey table
-(<code>surveys.csv</code>) as an example</li>
+(<code>20150514_KHW_Portal_joined.csv</code>) as an example</li>
 <li>explore the structure and the content of the data in R</li>
 <li>understand what are factors and how to manipulate them</li>
 </ul>
@@ -215,31 +215,15 @@ hr {
 <h1>Presentation of the Survey Data</h1>
 
 <p>We are studying the species and weight of animals caught in plots in our study
-area.  The dataset is stored as a <code>.csv</code> file: each row holds information for a
-single animal, and the columns represent <code>survey_id</code> , <code>month</code>, <code>day</code>, <code>year</code>,
-<code>plot</code>, <code>species</code> (a 2 letter code, see the <code>species.csv</code> file for
-correspondance), <code>sex</code> (&ldquo;M&rdquo; for males and &ldquo;F&rdquo; for females), <code>wgt</code> (the weight in
-grams).</p>
+area. The dataset is stored as a <code>.csv</code> file: each row holds information for a
+single animal. Yesterday we cleaned the data up into a nice format and joined it
+with information about the survey plots and species information.</p>
 
-<p>The first few rows of the survey dataset look like this:</p>
-
-<pre><code>&quot;63&quot;,&quot;8&quot;,&quot;19&quot;,&quot;1977&quot;,&quot;3&quot;,&quot;DM&quot;,&quot;M&quot;,&quot;40&quot;
-&quot;64&quot;,&quot;8&quot;,&quot;19&quot;,&quot;1977&quot;,&quot;7&quot;,&quot;DM&quot;,&quot;M&quot;,&quot;48&quot;
-&quot;65&quot;,&quot;8&quot;,&quot;19&quot;,&quot;1977&quot;,&quot;4&quot;,&quot;DM&quot;,&quot;F&quot;,&quot;29&quot;
-&quot;66&quot;,&quot;8&quot;,&quot;19&quot;,&quot;1977&quot;,&quot;4&quot;,&quot;DM&quot;,&quot;F&quot;,&quot;46&quot;
-&quot;67&quot;,&quot;8&quot;,&quot;19&quot;,&quot;1977&quot;,&quot;7&quot;,&quot;DM&quot;,&quot;M&quot;,&quot;36&quot;
-</code></pre>
-
-<p>To load our survey data, we need to locate the <code>surveys.csv</code> file. We will use
+<p>To load our survey data, we need to locate the <code>20150514_KHW_Portal_joined.csv</code> file. We will use
 <code>read.csv()</code> to load into memory (as a <code>data.frame</code>) the content of the CSV
 file.</p>
 
-<ul>
-<li><a href="https://github.com/datacarpentry/datacarpentry/raw/master/data/biology/surveys.csv">download the data file</a></li>
-<li>put it in directory <code>&quot;data&quot;</code> within your working directory for these exercises</li>
-</ul>
-
-<pre><code class="r">surveys &lt;- read.csv(&#39;data/surveys.csv&#39;)
+<pre><code class="r">surveys &lt;- read.csv(&#39;data/20150514_KHW_Portal_joined.csv&#39;)
 </code></pre>
 
 <!--- this chunk if for internal use so code in this lesson can be evaluated --->
@@ -264,6 +248,13 @@ function <code>head()</code>:</p>
 ## 4         4     7  16 1977       7         DM   M              36     NA
 ## 5         5     7  16 1977       3         DM   M              35     NA
 ## 6         6     7  16 1977       1         PF   M              14     NA
+##         genus  species   taxa                plot_type
+## 1     Neotoma albigula Rodent                  Control
+## 2     Neotoma albigula Rodent Long-term Krat Exclosure
+## 3   Dipodomys merriami Rodent                  Control
+## 4   Dipodomys merriami Rodent         Rodent Exclosure
+## 5   Dipodomys merriami Rodent Long-term Krat Exclosure
+## 6 Perognathus   flavus Rodent        Spectab exclosure
 </code></pre>
 
 <p>Let&#39;s now check the <strong>str</strong>ucture of this <code>data.frame</code> in more details with the

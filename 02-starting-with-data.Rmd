@@ -11,7 +11,7 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 > ## Learning Objectives
 >
 > * load external data (CSV files) in memory using the survey table
->  (`surveys.csv`) as an example
+>  (`20150514_KHW_Portal_joined.csv`) as an example
 > * explore the structure and the content of the data in R
 > * understand what are factors and how to manipulate them
 
@@ -23,36 +23,25 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 ```
 
 We are studying the species and weight of animals caught in plots in our study
-area.  The dataset is stored as a `.csv` file: each row holds information for a
-single animal, and the columns represent `survey_id` , `month`, `day`, `year`,
-`plot`, `species` (a 2 letter code, see the `species.csv` file for
-correspondance), `sex` ("M" for males and "F" for females), `wgt` (the weight in
-grams).
+area. The dataset is stored as a `.csv` file: each row holds information for a
+single animal. Yesterday we cleaned the data up into a nice format and joined it
+with information about the survey plots and species information.
 
-The first few rows of the survey dataset look like this:
+```{r, echo=FALSE, include = TRUE, purl=FALSE}
+surveys <- read.csv('20150514_KHW_Portal_joined.csv')
+head(surveys)
+```
 
-    "63","8","19","1977","3","DM","M","40"
-    "64","8","19","1977","7","DM","M","48"
-    "65","8","19","1977","4","DM","F","29"
-    "66","8","19","1977","4","DM","F","46"
-    "67","8","19","1977","7","DM","M","36"
-
-To load our survey data, we need to locate the `surveys.csv` file. We will use
+To load our survey data, we need to locate the `20150514_KHW_Portal_joined.csv` file. We will use
 `read.csv()` to load into memory (as a `data.frame`) the content of the CSV
 file.
 
-* [download the data file](https://github.com/datacarpentry/datacarpentry/raw/master/data/biology/surveys.csv)
-* put it in directory `"data"` within your working directory for these exercises
-
-
 ```{r, eval=FALSE,  purl=FALSE}
-surveys <- read.csv('data/surveys.csv')
+surveys <- read.csv('data/20150514_KHW_Portal_joined.csv')
 ```
 
 <!--- this chunk if for internal use so code in this lesson can be evaluated --->
-```{r, echo=FALSE, purl=FALSE}
-surveys <- read.csv('surveys.csv')
-```
+
 
 __At this point, make sure all participants have the data loaded__
 

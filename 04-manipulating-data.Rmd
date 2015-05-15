@@ -6,7 +6,7 @@ minutes: 45
 
 ```{r, echo=FALSE, purl=FALSE}
 knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
-surveys <- read.csv(file="surveys.csv")
+surveys <- read.csv(file="20150514_KHW_Portal_joined.csv")
 ```
 
 > ## Learning Objectives
