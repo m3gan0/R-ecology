@@ -4,7 +4,7 @@ title: Data carpentry -- Starting with R for data analysis
 keywords: ["R", "subset", "data.frame", "read.csv"]
 ---
 
-This is a an introduction to R designed for participants with no programming
+This is an introduction to R designed for participants with no programming
 experience. These lessons can be taught in 3/4 of a day. They start with some
 basic information about R syntax, the RStudio interface, and move through how to
 import CSV files, the structure of data.frame, how to deal with factors, how to
@@ -23,6 +23,8 @@ for each level and a very brief introduction to plotting.
 * [The `data.frame` class](03-data-frames.html)
 * [Manipulating data](04-manipulating-data.html)
 * [Analyzing and Plotting data](05-analyzing-data.html)
+* [Manipulating and analyzing data with dplyr](07-dplyr.html)
+* [Graphics with ggplot2](08-ggplot2.html)
 
 ## Other resources
 

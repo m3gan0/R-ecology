@@ -23,6 +23,8 @@ for each level and a very brief introduction to plotting.
 * [The `data.frame` class](03-data-frames.html)
 * [Manipulating data](04-manipulating-data.html)
 * [Analyzing and Plotting data](05-analyzing-data.html)
+* [Manipulating and analyzing data with dplyr](07-dplyr.html)
+* [Graphics with ggplot2](08-ggplot2.html)
 
 ## Other resources
 
