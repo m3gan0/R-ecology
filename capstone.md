@@ -17,5 +17,5 @@ Feel free to collaborate!
    the points colored by species id.
 3. For the species code `DM`, use dplyr to calculate the total number of counts
    per year for each plot type.
-4. Using the data frame you just created, plot the counts over time as line
-   graphs faceted by plot type.
+4. Using the data frame you just created, plot the counts (of the species "DM")
+   over time as line graphs faceted by plot type.
