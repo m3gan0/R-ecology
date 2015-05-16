@@ -271,9 +271,9 @@ str(example_data)
 <p>There are a few mistakes in this hand crafted <code>data.frame</code>, can you spot and
 fix them? Don&#39;t hesitate to experiment!</p>
 
-<pre><code>   author_book &lt;- data.frame(author_first=c(&quot;Charles&quot;, &quot;Ernst&quot;, &quot;Theodosius&quot;),
-                                author_last=c(Darwin, Mayr, Dobzhansky),
-                                year=c(1942, 1970))
+<pre><code>author_book &lt;- data.frame(author_first=c(&quot;Charles&quot;, &quot;Ernst&quot;, &quot;Theodosius&quot;),
+                          author_last=c(Darwin, Mayr, Dobzhansky),
+                          year=c(1942, 1970))
 </code></pre>
 
 <h3>Challenge {.challenge}</h3>
@@ -410,7 +410,7 @@ head_surveys &lt;- surveys[1:6, ] # surveys[1:6, ] is equivalent to head(surveys
 </code></pre>
 
 <blockquote>
-<h3>Challenge</h3>
+<h3>Challenge {.challenge}</h3>
 
 <p>The function <code>nrow()</code> on a <code>data.frame</code> returns the number of rows. Use it,
 in conjuction with <code>seq()</code> to create a new <code>data.frame</code> called

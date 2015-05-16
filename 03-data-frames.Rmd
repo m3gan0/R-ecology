@@ -67,11 +67,11 @@ __Point to the differences between character and factor output with str()__
 > There are a few mistakes in this hand crafted `data.frame`, can you spot and
 > fix them? Don't hesitate to experiment!
 > 
->    ```
->    author_book <- data.frame(author_first=c("Charles", "Ernst", "Theodosius"),
->                                 author_last=c(Darwin, Mayr, Dobzhansky),
->                                 year=c(1942, 1970))
->    ```
+> ```
+> author_book <- data.frame(author_first=c("Charles", "Ernst", "Theodosius"),
+>                           author_last=c(Darwin, Mayr, Dobzhansky),
+>                           year=c(1942, 1970))
+> ```
 
 
 > ### Challenge {.challenge}
@@ -164,7 +164,7 @@ surveys[, 8]    # the entire 8th column
 head_surveys <- surveys[1:6, ] # surveys[1:6, ] is equivalent to head(surveys)
 ```
 
-> ### Challenge
+> ### Challenge {.challenge}
 > 
 > The function `nrow()` on a `data.frame` returns the number of rows. Use it,
 > in conjuction with `seq()` to create a new `data.frame` called
